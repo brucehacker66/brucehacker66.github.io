@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yuqian (Bruce) Zhang — AI &amp; Robotics</title>
+<meta name="description" content="Yuqian (Bruce) Zhang — working at the intersection of AI and robotics, from robot learning and physical intelligence to AI products." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#faf8f3;
+    --card:#ffffff;
+    --ink:#222019;
+    --ink-soft:#54504a;
+    --muted:#8d8881;
+    --line:#e7e2d8;
+    --accent:#2f6f67;       /* calm deep teal */
+    --accent-soft:#e8f0ee;
+    --maxw:1080px;
+
+    /* shared 3-column grid for work + education so they align */
+    --cols:1.15fr 1.5fr 0.95fr;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Hanken Grotesk',-apple-system,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(250,248,243,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .brand{font-weight:600;letter-spacing:-.01em;text-decoration:none;font-size:1.02rem;white-space:nowrap}
+  .nav-links{display:flex;gap:24px;font-size:.92rem}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--accent)}
+  @media(max-width:640px){.nav-links{gap:16px;font-size:.82rem}}
+  @media(max-width:480px){.nav-links a:nth-child(3),.nav-links a:nth-child(4){display:none}}
+
+  /* ---------- section ---------- */
+  section{padding:80px 0}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:80px 0 64px}
+  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+  .hero .eyebrow{margin-bottom:22px}
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:500;font-optical-sizing:auto;
+    font-size:clamp(2.3rem,5.6vw,4.1rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);
+  }
+  .hero .lede{
+    max-width:620px;margin-top:24px;font-size:clamp(1.05rem,1.9vw,1.26rem);
+    color:var(--ink-soft);line-height:1.62;
+  }
+  .avatar{
+    width:210px;height:210px;border-radius:24px;object-fit:cover;
+    border:1px solid var(--line);box-shadow:0 18px 40px -26px rgba(34,32,25,.5);
+  }
+  .avatar-fallback{
+    display:none;align-items:center;justify-content:center;
+    background:var(--accent-soft);color:var(--accent);
+    font-family:'Fraunces',serif;font-size:3.4rem;font-weight:600;
+  }
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr;gap:28px}
+    .hero{padding:48px 0 48px}
+    .avatar{width:140px;height:140px;border-radius:20px;order:-1}
+    .avatar-fallback{font-size:2.4rem}
+  }
+
+  /* ---------- aligned 3-column rows (work + education) ---------- */
+  .row{
+    display:grid;grid-template-columns:var(--cols);gap:22px;align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .col-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;letter-spacing:-.01em;line-height:1.2}
+  .col-mid .role,.col-mid .deg{color:var(--ink-soft)}
+  .col-mid .desc,.col-mid .hon{display:block;font-size:.9rem;color:var(--muted);margin-top:3px}
+  .col-meta{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);text-align:right;white-space:nowrap;line-height:1.6}
+  .col-meta .loc{color:var(--ink-soft)}
+  /* small inline link pills (knowhiz / papers) */
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .pill{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.02em;
+    color:var(--accent);text-decoration:none;border:1px solid var(--line);
+    border-radius:100px;padding:4px 11px;transition:.2s;
+  }
+  .pill:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  @media(max-width:720px){
+    .row{grid-template-columns:1fr;gap:6px;padding:22px 0}
+    .col-meta{text-align:left;margin-top:2px}
+  }
+
+  /* ---------- projects ---------- */
+  .proj-list{display:flex;flex-direction:column;gap:22px}
+  .proj{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;
+    text-decoration:none;color:inherit;transition:border-color .25s,box-shadow .25s;
+  }
+  .proj:hover{border-color:var(--accent);box-shadow:0 16px 40px -28px rgba(47,111,103,.5)}
+  .proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+  .proj-top .idx{color:var(--accent)}
+  .proj-top .ext{color:var(--muted)}
+  .proj h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+  .proj p{color:var(--ink-soft);font-size:1rem;line-height:1.6}
+  .proj-stats{display:flex;gap:26px;margin:20px 0 4px;flex-wrap:wrap}
+  .proj-stats .st b{display:block;font-family:'Fraunces',serif;font-size:1.45rem;font-weight:600;color:var(--accent);line-height:1}
+  .proj-stats .st span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .tag{font-size:.82rem;color:var(--ink-soft);background:var(--accent-soft);border-radius:100px;padding:5px 13px}
+
+  /* project media: video + site preview */
+  .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#000}
+  .video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .media-cap{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:10px;text-align:center}
+  .site-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--paper)}
+  .site-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;border-bottom:1px solid var(--line);background:#fff}
+  .site-bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+  .site-bar b{margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);font-weight:400}
+  .site-body{padding:38px 20px;text-align:center}
+  .site-body .st-title{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--accent)}
+  .site-body .st-sub{font-size:.88rem;color:var(--muted);margin-top:4px}
+  .site-btn{display:inline-block;margin-top:18px;font-size:.88rem;font-weight:500;color:#fff;background:var(--accent);border-radius:100px;padding:9px 20px}
+  @media(max-width:760px){
+    .proj{grid-template-columns:1fr;gap:22px;padding:24px}
+    .proj .media{order:2}
+  }
+
+  /* ---------- stack ---------- */
+  .stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:760px){.stack-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.stack-grid{grid-template-columns:1fr}}
+  .stack-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 22px;transition:border-color .25s}
+  .stack-card:hover{border-color:var(--accent)}
+  .stack-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin-bottom:8px;letter-spacing:-.01em}
+  .stack-card p{font-size:.92rem;color:var(--muted);line-height:1.55}
+
+  /* ---------- contact ---------- */
+  .contact{text-align:center}
+  .contact h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:14px}
+  .contact p{color:var(--ink-soft);max-width:460px;margin:0 auto 36px}
+  .links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+  .links a{
+    text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink);
+    border:1px solid var(--line);background:var(--card);border-radius:100px;padding:12px 24px;transition:.22s;
+  }
+  .links a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:30px 0}
+  .foot-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.85rem;color:var(--muted)}
+
+  /* ---------- gentle reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="brand">Yuqian (Bruce) Zhang</a>
+      <div class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Roboticist · Researcher · Engineer · Bay Area, CA, USA</div>
+          <h1>Yuqian (Bruce) Zhang</h1>
+          <p class="lede">
+            I work at the intersection of AI and robotics — from robot learning and
+            physical intelligence to AI products. I love taking ideas the whole way
+            from research to a real system in the world, solving complex problems
+            efficiently.
+          </p>
+        </div>
+        <div>
+          <img class="avatar" src="profile.jpg" alt="Yuqian (Bruce) Zhang"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="avatar avatar-fallback" aria-hidden="true">YZ</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- EDUCATION (moved up) -->
+  <section id="education">
+    <div class="wrap">
+      <div class="eyebrow reveal">Education</div>
+
+      <div class="row reveal">
+        <div class="col-title">University of Pennsylvania</div>
+        <div class="col-mid"><span class="deg">Master of Science in Robotics</span></div>
+        <div class="col-meta">Expected Aug 2026<br><span class="loc">Philadelphia, PA</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">Johns Hopkins University</div>
+        <div class="col-mid">
+          <span class="deg">B.S. Computer Science &amp; Electrical Engineering</span>
+          <span class="hon">Charles A. Conklin Award for outstanding ECE seniors</span>
+        </div>
+        <div class="col-meta">Dec 2024<br><span class="loc">Baltimore, MD</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="eyebrow reveal">Selected Work</div>
+
+      <div class="row reveal">
+        <div class="col-title">UPenn · GRASP Lab</div>
+        <div class="col-mid"><span class="role">Robotics Researcher</span><span class="desc">Robot learning &amp; physical intelligence</span></div>
+        <div class="col-meta">2025 — Present<br><span class="loc">Philadelphia, PA</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">Google</div>
+        <div class="col-mid"><span class="role">Software Engineer Intern</span><span class="desc">Cloud AI &amp; Infrastructure</span></div>
+        <div class="col-meta">May — Aug 2025<br><span class="loc">Sunnyvale, CA</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">Amazon Robotics</div>
+        <div class="col-mid"><span class="role">Software Development Engineer Intern</span><span class="desc">Manipulation robots</span></div>
+        <div class="col-meta">Jan — May 2025<br><span class="loc">Boston, MA</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">KnoWhiz</div>
+        <div class="col-mid">
+          <span class="role">Co-Founder &amp; Tech Lead</span>
+          <span class="desc">Led development of an education AI agent</span>
+          <div class="pills"><a class="pill" href="https://www.knowhiz.us/" target="_blank" rel="noopener">knowhiz.us ↗</a></div>
+        </div>
+        <div class="col-meta">Jan 2024 — Feb 2025<br><span class="loc">Remote</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">United Imaging</div>
+        <div class="col-mid"><span class="role">Research Intern</span><span class="desc">AI · ML infra · HPC · medical imaging</span></div>
+        <div class="col-meta">May — Aug 2024<br><span class="loc">Houston, TX</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">JHU · ARCADE Lab</div>
+        <div class="col-mid">
+          <span class="role">AI Researcher</span>
+          <span class="desc">AI · medical robotics · computer vision</span>
+          <div class="pills">
+            <a class="pill" href="https://arxiv.org/abs/2410.20026" target="_blank" rel="noopener">arXiv 2410.20026 ↗</a>
+            <a class="pill" href="https://arxiv.org/abs/2407.11906" target="_blank" rel="noopener">arXiv 2407.11906 ↗</a>
+          </div>
+        </div>
+        <div class="col-meta">Feb 2023 — Dec 2024<br><span class="loc">Baltimore, MD</span></div>
+      </div>
+
+      <div class="row reveal">
+        <div class="col-title">WeRide</div>
+        <div class="col-mid"><span class="role">Software Engineer Intern</span><span class="desc">Autonomous-driving infrastructure</span></div>
+        <div class="col-meta">May — Aug 2023<br><span class="loc">Guangzhou, China</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow reveal">Featured Projects</div>
+      <div class="proj-list">
+
+        <a class="proj reveal" href="#">
+          <div class="content">
+            <div class="proj-top"><span class="idx">01 · RL &amp; Control</span><span class="ext">Award</span></div>
+            <h3>Autonomous Drone Racing via Reinforcement Learning</h3>
+            <p>
+              Designed and trained a RL policy for high-speed
+              autonomous drone racing. It took 1st place in the sim-to-real track and
+              placed top&nbsp;3 in both simulation and sim-to-real among 30 teams.
+            </p>
+            <div class="proj-stats">
+              <div class="st"><b>1st</b><span>Sim-to-Real</span></div>
+              <div class="st"><b>Top 3</b><span>Sim &amp; Sim-to-Real</span></div>
+              <div class="st"><b>30</b><span>Teams</span></div>
+            </div>
+            <div class="tags">
+              <span class="tag">Reinforcement Learning</span>
+              <span class="tag">Reward Design</span>
+              <span class="tag">Sim-to-Real</span>
+            </div>
+          </div>
+          <div class="media">
+            <div class="video-frame">
+              <video controls preload="metadata" poster="assets/drone-poster.jpg">
+                <source src="assets/drone-racing.mp4" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+            </div>
+            <p class="media-cap">Sim-to-real drone racing run · ~30s</p>
+          </div>
+        </a>
+
+        <a class="proj reveal" href="https://www.levari.site/" target="_blank" rel="noopener">
+          <div class="content">
+            <div class="proj-top"><span class="idx">02 · Product &amp; AI</span><span class="ext">levari.site ↗</span></div>
+            <h3>Levari — AI-Native Marketplace</h3>
+            <p>
+              Built end-to-end as the sole engineer and product owner: an AI-native
+              marketplace that helps students monetize their skills and benefit one
+              another. I took it from a single idea to a live product — designing AI
+              agents, AI search &amp; recommendation, real-time chat, and the full
+              cloud infrastructure on Azure (database, DevOps).
+            </p>
+            <div class="tags">
+              <span class="tag">AI Agents</span>
+              <span class="tag">Search &amp; Recommendation</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Real-time Chat</span>
+              <span class="tag">Full-Stack</span>
+            </div>
+          </div>
+          <div class="media">
+            <div class="site-card">
+              <div class="site-bar"><i></i><i></i><i></i><b>levari.site</b></div>
+              <div class="site-body">
+                <div class="st-title">Levari</div>
+                <div class="st-sub">AI-native marketplace for students</div>
+                <span class="site-btn">Open site ↗</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="wrap">
+      <div class="eyebrow reveal">Knowledge Stack</div>
+      <div class="stack-grid">
+        <div class="stack-card reveal"><h4>Robot Learning &amp; Physical Intelligence</h4><p>Reinforcement &amp; imitation learning, policy learning, and sim-to-real — bridging perception, control, and embodiment so models act reliably in the real world.</p></div>
+        <div class="stack-card reveal"><h4>Language &amp; Multimodal Models</h4><p>LLMs, MLLMs, and foundation models across text, vision, and action — reasoning, tool use, and retrieval grounded in what models see and do.</p></div>
+        <div class="stack-card reveal"><h4>AI Agents</h4><p>Designing autonomous, tool-using agents — planning, memory, and orchestration that turn models into systems that get real work done.</p></div>
+        <div class="stack-card reveal"><h4>Generative Models</h4><p>Image &amp; video generation and diffusion models — synthesis and creative pipelines.</p></div>
+        <div class="stack-card reveal"><h4>Full-Stack &amp; System Design</h4><p>Building products end to end with an emphasis on high availability, scalability, and sound system design — from architecture to a shipped product.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <h2>Let's build something together.</h2>
+      <p>Always happy to talk about robot learning, physical intelligence, or a product worth shipping.</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/yqbrucezhang/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=0Cg_pk0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/brucehacker66/" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:yuqianbrucez@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-inner">
+      <div>© <span id="yr"></span> Yuqian (Bruce) Zhang</div>
+      <div>Philadelphia, PA</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
